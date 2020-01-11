@@ -1,0 +1,2 @@
+class OpEndError(RuntimeError):
+    pass
