@@ -2,8 +2,6 @@ from operations.branches.branch_equals import BeOp
 
 
 class BzOp(BeOp):
-
-    ID = 14
     ARGC = 2
 
     def __init__(self, *args):

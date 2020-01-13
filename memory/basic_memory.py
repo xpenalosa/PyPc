@@ -2,7 +2,6 @@ from memory.errors import MemoryReadError, MemoryWriteError
 
 
 class BasicMemory:
-
     MEM_SIZE = 512
 
     def __init__(self):

@@ -1,9 +1,7 @@
-from operations.compares.base_compare import BaseCompareOp
+from operations.compares.base_compare import BaseCompareBaseOp
 
 
-class LtOp(BaseCompareOp):
-
-    ID = 21
+class LtOp(BaseCompareBaseOp):
 
     def __init__(self, *args):
         super().__init__(*args)

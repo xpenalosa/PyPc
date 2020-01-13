@@ -1,9 +1,7 @@
-from operations.op import Op
+from operations.base_op import BaseOp
 
 
-class InpOp(Op):
-
-    ID = 3
+class InpBaseOp(BaseOp):
     ARGC = 1
 
     def __init__(self, *args):

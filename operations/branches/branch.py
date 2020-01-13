@@ -1,11 +1,10 @@
 from operations.branches.base_branch import BaseBranchBaseOp
 
 
-class BeOp(BaseBranchBaseOp):
-    ARGC = 3
+class BrOp(BaseBranchBaseOp):
 
     def __init__(self, *args):
         super().__init__(*args)
 
     def _check_branch(self, a1, a2):
-        return a1 == a2
+        return True

@@ -1,9 +1,7 @@
-from operations.op import Op
+from operations.base_op import BaseOp
 
 
-class BaseCompareOp(Op):
-
-    ID = 20
+class BaseCompareBaseOp(BaseOp):
     ARGC = 3
 
     def __init__(self, *args):

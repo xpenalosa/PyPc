@@ -1,23 +1,23 @@
-1101,5,0,0,1022,0,0,9,1113,0,20,0004,0,1001,0,-1,0,1114,0,4,99
+1101,5,0,0,1022,0,0,9,1114,0,20,0004,0,1001,0,-1,0,1113,0,4,99
 
 a = 5
-while not (a <= 0)
+while a > 0
 	print(a)
 	a--
 
-ADD 5L, 0L, 0
+ADD 5L, 0L, 0       # a = 5
 LOOP:
-	LTE 0, 0L, 1
-	BNZ 1, END
-	OUT 0
-	ADD 0, -1L, 1
-	BEZ 0L, LOOP
-END
+	LTE 0, 0L, 9    # a <= 0 ? Store result as argument in next operation
+	BNZ 1, END      # if true jump to end
+	OUT 0           # output a
+	ADD 0, -1L, 0   # decrease a by 1
+	BEZ 0L, LOOP    # jump to while
+END                 # end program
 
 0  -> 1101, 5, 0, 0
-4  -> 1021, 0, 0, 9
-8  -> 1113, 1, END
+4  -> 1022, 0, 0, 9
+8  -> 1114, 1, END
 11 -> 0004, 0
 13 -> 1001, 0, -1, 0
-17 -> 1114, 1, 4
+17 -> 1113, 1, 4
 20 -> END

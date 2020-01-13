@@ -2,7 +2,6 @@ from memory.modified_access_memory import ModifiedAccessMemory
 
 
 class RegisterMemory(ModifiedAccessMemory):
-
     REG_SIZE = 8
 
     def __init__(self):

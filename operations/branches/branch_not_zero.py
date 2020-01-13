@@ -2,8 +2,6 @@ from operations.branches.branch_not_equals import BneOp
 
 
 class BnzOp(BneOp):
-
-    ID = 13
     ARGC = 2
 
     def __init__(self, *args):

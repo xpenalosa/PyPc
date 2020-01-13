@@ -1,9 +1,7 @@
-from operations.op import Op
+from operations.base_op import BaseOp
 
 
-class BaseBranchOp(Op):
-
-    ID = 10
+class BaseBranchBaseOp(BaseOp):
     ARGC = 2
     MV_PTR = False
 

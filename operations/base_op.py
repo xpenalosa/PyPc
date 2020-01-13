@@ -1,9 +1,8 @@
-class Op:
-    
+class BaseOp:
     ID = 0
     ARGC = 0
     MV_PTR = True
-    
+
     def __init__(self, mod_a1=0, mod_a2=0):
         self.pc = None
         self.mod_a1 = mod_a1
@@ -14,7 +13,7 @@ class Op:
 
     def set_pc(self, pc):
         self.pc = pc
-        self.pc.debug("-"*10)
+        self.pc.debug("-" * 10)
         self.pc.debug(self)
 
     def parse_args(self):
@@ -36,7 +35,7 @@ class Op:
             args.append(value)
         self.pc.debug("\tArgs: " + str(args))
         return args
-    
+
     def execute(self):
         args = self.parse_args()
         self._execute(args)
