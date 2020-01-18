@@ -1,0 +1,8 @@
+ADD 5L, 0L, 0
+.LOOP
+	LTE 0, 0L, 9
+	BNZ 0L, .END
+	OUT 0
+	ADD 0, -1L, 0
+	BZ 0L, .LOOP
+.END

@@ -24,7 +24,7 @@ class Pc:
 
     def __run_until_op(self, op_id):
         current_op_id = self.memory.get_value(modification=1)
-        while current_op_id != op_id:
+        while current_op_id not in [op_id, Operations.END.value]:
             current_op = Operations.from_id(current_op_id)
             self.debug(current_op)
             self.__execute_op(current_op)

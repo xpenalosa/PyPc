@@ -1,7 +1,7 @@
 from operations.base_op import BaseOp
 
 
-class OutBaseOp(BaseOp):
+class OutOp(BaseOp):
     ARGC = 1
 
     def __init__(self, *args):

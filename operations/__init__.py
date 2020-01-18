@@ -36,39 +36,14 @@ class Operations(Enum):
         mod_a1 = (op_id // 100) % 10
         mod_a2 = (op_id // 1000) % 10
 
-        def __get_op(_op_id):
-            op = Operations(_op_id)
-            if op is Operations.NOP:
-                return BaseOp
-            elif op == Operations.ADD:
-                return AddOp
-            elif op == Operations.MUL:
-                return MulOp
-            elif op == Operations.INP:
-                return InpBaseOp
-            elif op == Operations.OUT:
-                return OutBaseOp
-            elif op == Operations.DIV:
-                return DivOp
-            elif op == Operations.MOD:
-                return ModOp
-            elif op == Operations.BR:
-                return BrOp
-            elif op == Operations.BE:
-                return BeOp
-            elif op == Operations.BNE:
-                return BneOp
-            elif op == Operations.BZ:
-                return BzOp
-            elif op == Operations.BNZ:
-                return BnzOp
-            elif op == Operations.EQ:
-                return EqOp
-            elif op == Operations.LT:
-                return LtOp
-            elif op == Operations.LTE:
-                return LteOp
-            elif op == Operations.END:
-                raise OpEndError()
+        return Operations(op).operation_class(mod_a1, mod_a2)
 
-        return __get_op(op)(mod_a1, mod_a2)
+    @property
+    def operation_class(self):
+        """Get operation class via reflection."""
+        clazzname = self.name.title() + "Op"
+        if clazzname == "NopOp":
+            clazz = BaseOp
+        else:
+            clazz = globals()[clazzname]
+        return clazz

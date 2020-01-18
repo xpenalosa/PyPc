@@ -1,2 +1,2 @@
-from .input import InpBaseOp
-from .output import OutBaseOp
+from .input import InpOp
+from .output import OutOp
