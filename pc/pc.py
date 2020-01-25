@@ -1,4 +1,4 @@
-from operations import Operations, errors
+from operations import Operations
 
 
 class Pc:
@@ -7,20 +7,16 @@ class Pc:
         self.memory = None
         self.debug_mode = debug_mode
 
-    def read_data(self, data_file, memory_type):
-        self.memory = memory_type.instantiate()
-        self.memory.read_file(data_file)
+    def set_memory(self, memory):
+        self.memory = memory
 
     def run(self):
-        self.run_until_op(Operations.END)
+        self.run_until_op(Operations.END.value)
 
     def run_until_op(self, op_id):
-        try:
-            self.debug(self.memory)
-            self.__run_until_op(op_id)
-        except errors.OpEndError:
-            self.debug(f"Found {Operations.END}")
-            self.debug(self.memory)
+        self.debug(self.memory)
+        self.__run_until_op(op_id)
+        self.debug(self.memory)
 
     def __run_until_op(self, op_id):
         current_op_id = self.memory.get_value(modification=1)

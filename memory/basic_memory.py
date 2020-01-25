@@ -1,4 +1,5 @@
 from memory.errors import MemoryReadError, MemoryWriteError
+from operation_parser import UnalignedParser
 
 
 class BasicMemory:
@@ -8,14 +9,13 @@ class BasicMemory:
         self.data = [0] * BasicMemory.MEM_SIZE
         self.address = 0
 
-    def read_file(self, file):
-        with open(file, 'r') as f:
-            read_data = [int(x) for x in f.readline().split(",")]
-            if len(read_data) > len(self.data):
-                raise MemoryWriteError(
-                    f"Data too big for memory ({BasicMemory.MEM_SIZE})")
-            self.data = [0] * BasicMemory.MEM_SIZE
-            self.data[:len(read_data)] = read_data[:]
+    def read_file(self, file, is_parsed=False):
+        self.data = [0] * BasicMemory.MEM_SIZE
+        read_data = BasicMemory._parse_data(file, is_parsed)
+        if len(read_data) > len(self.data):
+            raise MemoryWriteError(
+                f"Data too big for memory ({BasicMemory.MEM_SIZE})")
+        self.data[:len(read_data)] = read_data[:]
         self.address = 0
 
     def get_value(self, address=None, *args, **kwargs):
@@ -42,3 +42,12 @@ class BasicMemory:
 
     def __str__(self):
         return f"[M {self.address}] {self.data}"
+
+    @staticmethod
+    def _parse_data(file, is_parsed):
+        with open(file, 'r') as f:
+            target = f.readline()
+            if not is_parsed:
+                target = UnalignedParser.parse_file(file)
+            read_data = [int(x) for x in target.split(",")]
+        return read_data

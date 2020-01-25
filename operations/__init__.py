@@ -1,7 +1,6 @@
 from enum import Enum, unique
 
 from operations.base_op import BaseOp
-from operations.errors import OpEndError
 from .branches import *
 from .compares import *
 from .io import *
