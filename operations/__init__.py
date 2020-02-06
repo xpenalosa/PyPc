@@ -1,6 +1,7 @@
 from enum import Enum, unique
 
 from operations.base_op import BaseOp
+from .move import MoveOp
 from .branches import *
 from .compares import *
 from .io import *
@@ -16,6 +17,7 @@ class Operations(Enum):
     OUT = 4
     DIV = 5
     MOD = 6
+    MOV = 7
 
     BR = 10
     BE = 11

@@ -54,7 +54,12 @@ class BaseParser:
 
     def parse_file(self, file):
         with open(file, 'r') as f:
-            instructions = [line.strip() for line in f.readlines() if line]
+            contents = f.read()
+        return self.parse_string(contents)
+
+    def parse_string(self, string):
+        lines = string.split("\n")
+        instructions = [line.strip() for line in lines if line]
         self._parse_instructions(instructions)
         return self.parsed_code
 
