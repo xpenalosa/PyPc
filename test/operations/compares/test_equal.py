@@ -1,5 +1,5 @@
-from memory import MemoryTypes
-from operations import Operations
+from pypc.memory import MemoryTypes
+from pypc.operations import Operations
 from test.operations.operation_test import OperationTestBase
 
 

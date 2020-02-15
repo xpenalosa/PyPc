@@ -1,8 +1,15 @@
+import logging
+import sys
 from unittest import TestCase
 
-from memory import MemoryTypes
-from operations import Operations
-from pc import Pc
+logging.basicConfig(
+    format="[%(levelname)s] %(name)s - %(message)s",
+    stream=sys.stdout,
+    level=logging.WARN)
+
+from pypc.memory import MemoryTypes
+from pypc.operations import Operations
+from pypc.pc import Pc
 
 
 class TestPc(TestCase):

@@ -1,0 +1,8 @@
+MOV 5L, $0
+.LOOP
+	LTE $0, 0L, $1
+	BNZ $1, .END
+	OUT $0
+	ADD $0, -1L, $0
+	BNZ 1L, .LOOP
+.END
