@@ -2,11 +2,6 @@ import logging
 import sys
 from unittest import TestCase
 
-logging.basicConfig(
-    format="[%(levelname)s] %(name)s - %(message)s",
-    stream=sys.stdout,
-    level=logging.WARN)
-
 from pypc.memory import MemoryTypes
 from pypc.operations import Operations
 from pypc.pc import Pc
@@ -15,6 +10,10 @@ from pypc.pc import Pc
 class TestPc(TestCase):
 
     def setUp(self) -> None:
+        logging.basicConfig(
+            format="[%(levelname)s] %(name)s - %(message)s",
+            stream=sys.stdout,
+            level=logging.WARN)
         self.raw_data = [
             Operations.ADD.value, 0, 0, 7,
             Operations.OUT.value, 7,

@@ -46,6 +46,7 @@ class UnalignedParser(BaseParser):
     def _parse_instructions(self, instructions):
         for inst in instructions:
             if ArgumentUtils.is_tag(inst):
+                self.LOGGER.debug(f"Adding tag [{inst}]")
                 self.add_tag(ArgumentUtils.strip_argument_mode(
                     inst, ArgumentUtils.LITERAL_MODE))
                 continue
