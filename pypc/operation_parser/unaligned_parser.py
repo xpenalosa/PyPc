@@ -45,6 +45,11 @@ class UnalignedParser(BaseParser):
 
     def _parse_instructions(self, instructions):
         for inst in instructions:
+            # Skip comments
+            inst = inst.split("#")[0]
+            if not inst:
+                # Empty strings
+                continue
             if ArgumentUtils.is_tag(inst):
                 self.LOGGER.debug(f"Adding tag [{inst}]")
                 self.add_tag(ArgumentUtils.strip_argument_mode(

@@ -1,0 +1,28 @@
+# --- Example input 1 ---
+#
+# This file contains an example input for the pypc module. If the input is not
+# parsed, an explanation for every line of input will be added as a comment.
+#
+# Requirements:
+#   - Needs parsing
+#   - Memory supports registers
+#
+# Input features:
+#   - Code tags
+#   - Register access
+#
+# Pseudo-code:
+#   a = 5
+#   while a > 0:
+#     print(a)
+#     a--
+
+MOV 5L, $0              # A = 5, where A is Register $0
+.LOOP
+	LTE $0, 0L, $1      # B = (A <= 0), where B is Register $1
+	BNZ $1, .LOOP_END   # if B is false exit loop
+	OUT $0              # print A
+	ADD $0, -1L, $0     # A = A - 1
+	BNZ 1L, .LOOP       # jump to loop start
+.LOOP_END
+                        # end-of-program appended by default
